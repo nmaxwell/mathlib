@@ -37,7 +37,8 @@ using namespace std;
 char * fname = new char [filename_string_size];
 char * pwd = new char [filename_string_size];
 
-#include <mathlib/machine_info.h>
+// must copy ml_machine_info_.h to the search path of your compiler, removing the last '_'
+#include <ml_machine_info.h>
 #include "memory/ml_alloc.h"
 #include "graphing/colors.h"
 #include "../math/std_math.h"
