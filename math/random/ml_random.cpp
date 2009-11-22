@@ -40,10 +40,11 @@ bool ml_random::setup()
     clock_gettime(CLOCK_REALTIME, &currentTime);
     gsl_rng_set(gen,currentTime.tv_nsec);
     
-    if ( gsl_rng_max(gen) != (unsigned long)(-1) )
+    /*if ( gsl_rng_max(gen) != (uint32)(-1) )
         OK = false;
     if ( gsl_rng_min(gen) != 0 )
         OK = false;
+    */
     
     return OK;
 }
