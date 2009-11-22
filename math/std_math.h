@@ -28,7 +28,7 @@ inline double log_factorial(double const & x)
 
 inline double factorial(double const & x)
 {
-    return exp(gamma(x+1)); // this is esp(log(gamma(x+1)))
+    return exp(gamma(x+1)); // this is exp(log(gamma(x+1)))
 }
 
 inline double binom(double const & n, double const & k)
