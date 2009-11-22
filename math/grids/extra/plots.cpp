@@ -97,7 +97,7 @@ void plotGrid1D_dots(grid1D<Ytype,YtypeScalar,Xtype > & G,  plot2D & plot, int s
 #ifdef GRID2D_H
 
 template<class Ytype, class YtypeScalar,class Xtype >
-void plotGrid2D_1(grid2D<Ytype,YtypeScalar,Xtype > & G,  char * fname, color3 (*cmap)(Ytype I) )
+void plotGrid2D_1(grid2D<Ytype,YtypeScalar,Xtype > & G,  const char * fname, ml_color (*cmap)(Ytype I) )
 {	
 	plot2D plot(G.a1,G.b1,G.a2,G.b2, G.n1,G.n2);
 	

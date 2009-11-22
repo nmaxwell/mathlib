@@ -18,7 +18,7 @@ public: // discretization
 	
 	inline Xtype dx1() { return (b1-a1)/n1; }
 	
-	inline Xtype dk1() { return (Xtype)_2pi/(b1-a1); }
+	inline Xtype dk1() { return (Xtype)ml_2pi/(b1-a1); }
 	
 	inline Xtype x1(const int & i) { return ((b1-a1)/n1)*i+a1; }
 	

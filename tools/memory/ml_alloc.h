@@ -7,9 +7,15 @@
 template<class T >
 T * ml_alloc( int n );
 
-
 template<class T >
 void ml_free( T* & );
+
+// array of m arrays of size n, be carefull with this...
+template<class T >
+T ** ml_alloc( int n, int m );
+
+template<class T >
+void ml_free( T** & );
 
 
 

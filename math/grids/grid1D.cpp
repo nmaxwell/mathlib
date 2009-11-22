@@ -37,7 +37,7 @@ template<classgridPars_ >
 void grid1D<gridPars_ >
 ::dispData( bool clean, YtypeScalar eps )
 {
-	std::cout << "start data:\n\n";
+/*	std::cout << "start data:\n\n";
 	if (clean)
 	{
 		if (n1 >= 1)
@@ -54,7 +54,7 @@ void grid1D<gridPars_ >
 		if (n1 > 0)
 			std::cout << (*this)(n1-1) << ";\n";
 	}
-	std::cout << "end data.\n";
+	std::cout << "end data.\n";*/
 }
 
 // linear interpolation

@@ -18,6 +18,29 @@ void ml_free( T* &p )
 	p=0;
 }
 
+template<class T >
+T ** ml_alloc( int n, int m )
+{
+    T ** p = ml_alloc< T* > (m);
+    
+    for (int k=0; k<m; k++)
+        p[k] = ml_alloc<T > (n);
+    
+    return p;
+}
+
+template<class T >
+void ml_free( T** &p, int m )
+{
+	if (p)
+    {
+        for (int k=0; k<m; k++)
+            ml_free ( p[k] );
+    }
+    delete [] p;
+	p=0;
+}
+
 // double, using fftw_alloc
 
 template<>

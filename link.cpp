@@ -6,7 +6,13 @@
  * 
  */
 
+#ifdef ML_RAND_WALK_H
+    #include "math/SDE/random_walk.cpp"
+#endif
 
+#ifdef ML_ALLOC_H
+	#include "tools/memory/ml_alloc.cpp"
+#endif
 
 #ifdef ML_ALLOC_H
 	#include "tools/memory/ml_alloc.cpp"
