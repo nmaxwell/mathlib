@@ -54,6 +54,19 @@ void gen_BM( double h, int n_steps, double *& W, int32 * walk, int32 * pool )
         W[k] = h*walk[k];
 }
 
+void gen_BM( double h, int n_steps, float *& W, int32 * walk, int32 * pool )
+{
+    static ml_random rng;
+    
+    for (int k=0; k<n_steps; k++)
+        pool[k] = rng.gen_int();
+    
+    binom_to_random_walk ( pool, n_steps, walk );
+    
+    for ( int k=0; k<n_steps; k++ )
+        W[k] = h*walk[k];
+}
+
 
 
 
@@ -85,6 +98,32 @@ void gen_BM( double h, int n_steps, double **& W, int n_runs )
     ml_free (pool);
 }
 
+void gen_BM( double h, int n_steps, float *& W )
+{
+    if ( W == 0 ) W = ml_alloc<float > ( n_steps );
+    
+    int32 *walk = ml_alloc<int32 > (n_steps);
+    int32 *pool = ml_alloc<int32 > (n_steps);
+    
+    gen_BM( h, n_steps, W, walk, pool);
+    
+    ml_free (walk);
+    ml_free (pool);
+}
+
+void gen_BM( double h, int n_steps, float **& W, int n_runs )
+{
+    if ( W == 0 ) W = ml_alloc<float > ( n_steps, n_runs );
+    
+    int32 *walk = ml_alloc<int32 > (n_steps);
+    int32 *pool = ml_alloc<int32 > (n_steps);
+    
+    for (int j=0; j<n_runs; j++)
+        gen_BM( h, n_steps, W[j], walk, pool);
+    
+    ml_free (walk);
+    ml_free (pool);
+}
 
 
 #endif
