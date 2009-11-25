@@ -135,9 +135,28 @@ double ml_random::gen_double()
     return gsl_rng_uniform(gen);
 }
 
-double ml_random::gen_double_nozero()
+double ml_random::gen_double_nonzero()
 {
     return gsl_rng_uniform_pos (gen);
 }
           		
+void ml_random::std_normal_rv( double * x, int n )
+{
+    double u1,u2;
+    for ( int k=0; k<n/2; k++ )
+    {
+        u1 = gen_double_nonzero();
+        u2 = gen_double_nonzero();
+        
+        box_muller( u1, u2, x[2*k], x[2*k+1] );
+    }
+    
+    if (n%2)
+    {
+        u1 = gen_double_nonzero();
+        u2 = gen_double_nonzero();
+        box_muller( u1, u2, x[n-2], x[n-1] );
+    }
+}
+
 #endif

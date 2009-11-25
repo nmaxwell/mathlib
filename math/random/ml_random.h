@@ -20,6 +20,10 @@ void int32_to_bool_decomp(int n, int * x, bool * decomp )
 }
 
 
+#define box_muller( u1, u2, n1, n2 ) \
+    n1 = sqrt(-log(u1)*2)*cos(ml_2pi*u2); \
+    n2 = sqrt(-log(u1)*2)*sin(ml_2pi*u2);
+
 
 class ml_random
 {
@@ -49,9 +53,9 @@ public:
     
     int gen_int();
     double gen_double();
-    double gen_double_nozero();
+    double gen_double_nonzero();
     
-    
+    void std_normal_rv( double * x, int n );
 };
 
 
