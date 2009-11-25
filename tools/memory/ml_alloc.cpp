@@ -19,7 +19,7 @@ void ml_free( T* &p )
 }
 
 template<class T >
-T ** ml_alloc( int n, int m )
+T ** ml_alloc( int m, int n )
 {
     T ** p = ml_alloc< T* > (m);
     
