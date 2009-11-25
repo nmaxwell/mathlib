@@ -19,7 +19,7 @@ void ml_free( T* &p )
 }
 
 template<class T >
-T ** ml_alloc( int m, int n )
+T ** ml_alloc(  int m, int n )
 {
     T ** p = ml_alloc< T* > (m);
     
@@ -40,6 +40,9 @@ void ml_free( T** &p, int m )
     delete [] p;
 	p=0;
 }
+
+
+#ifndef ML_NOT_USE_FFTW_MALLOC
 
 // double, using fftw_alloc
 
@@ -71,7 +74,7 @@ void ml_free( complex<double>* &p )
 	p=0;
 }
 
-
+#endif
 
 
 
