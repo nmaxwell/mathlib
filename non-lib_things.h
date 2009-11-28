@@ -44,12 +44,72 @@
 
 
 
+template< class T >
+void output( T * data, int n, const char * fname, const char * delim1="\t", const char * delim2="\n" )
+{
+    ofstream out;
+    out.open(fname, fstream::out);
+    assert(out.good() && out.is_open());
+    
+    for ( int k=0; k<n; k++ )
+        out << data[k] << delim2;
+    
+    out.close();
+}
+
+template< class T1, class T2 >
+void output( T1 * data1, T2 * data2, int n, const char * fname, const char * delim1="\t", const char * delim2="\n" )
+{
+    ofstream out;
+    out.open(fname, fstream::out);
+    assert(out.good() && out.is_open());
+    
+    for ( int k=0; k<n; k++ )
+        out << data1[k] << delim1 << data2[k] << delim2;
+    
+    out.close();
+}
+
+double * reg_discr( double a, double b, int n)
+{
+    double * p = ml_alloc<double > ( n );
+    for (int k=0; k<n; k++ )
+        p[k] = ((b-a)/n)*k + a;
+    
+    return p;
+}
 
 
 
 
+/*
+
+double integrate(double (*func)(double,void *), double a, double b, void * arg_ptr=0,  double epsabs=1E-6, double epsrel=1E-10)
+{
+    
+    double result,real_abserr,imag_result,imag_abserr;
+    static gsl_integration_workspace * workspace = gsl_integration_workspace_alloc (1000000);
+    
+    gsl_function F;
+    F.function = func;
+    F.params = arg_ptr;
+    
+    gsl_integration_qag (
+        &F,
+        a,
+        b,
+        epsabs,
+        epsrel,
+        200000,
+        2,
+        workspace,
+        &result,
+        &real_abserr );
+    
+    return result;
+}
 
 
-
+*/
 
 

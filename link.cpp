@@ -6,8 +6,8 @@
  * 
  */
 
-#ifdef ML_RAND_WALK_H
-    #include "math/SDE/random_walk.cpp"
+#ifdef ML_BM_H
+    #include "math/SDE/BM.cpp"
 #endif
 
 #ifdef ML_ALLOC_H
