@@ -79,7 +79,46 @@ double * reg_discr( double a, double b, int n)
     return p;
 }
 
+double ml_mean ( double * data, int n )
+{
+    double mean =0;
+    
+    for ( int k=0; k<n; k++ )
+        mean += data[k];
+    
+    return mean;
+}
 
+double std_dev ( double * data, int n )
+{
+    double mu = 0;
+    double sig = 0;
+    
+    for ( int k=0; k<n; k++ )
+        mu += data[k];
+    
+    for ( int k=0; k<n; k++ )
+        sig += data[k]*data[k];
+    
+    return sqrt((sig-mu*mu/n)/n);
+}
+
+# define mean_stdev mean_std_dev
+void mean_std_dev ( double * data, int n, double & mu, double & sig )
+{
+    mu = 0;
+    sig = 0;
+    
+    for ( int k=0; k<n; k++ )
+        mu += data[k];
+    
+    mu /= n;
+    
+    for ( int k=0; k<n; k++ )
+        sig += data[k]*data[k];
+    
+    sig = sqrt(sig/n-mu*mu);
+}
 
 
 /*

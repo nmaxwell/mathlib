@@ -1,16 +1,46 @@
 
 
 
+def line_parse( string, delims = [',', '\t' ] ):
+    
+    for c in delims:
+        string = string.replace( c ,' ' )
+    
+    try:
+        return float(string)
+    except:
+        R = []
+        for x in string.split():
+            try:
+                R.append(float(x))
+            except:
+                pass
+        
+        return R
 
 
-def read_file(file_string):
+def read_file(file_string, delims = [',', '\t' ] ):
     file_ptr = file(file_string)
     lines = file_ptr.readlines()
-    data = []
-    [data.append(float(line.strip())) for line in lines]
-    return data
     
+    R = [ line_parse(line) for line in lines ]
+    
+    while [] in R:
+        R.remove([])
+    
+    return R
 
+def read_text( text, delims = [',', '\t' ], line_delim = [';' ] ):
+    
+    if isinstance(text,str):
+        for c in line_delim:
+            text = text.replace( c ,'\n' )
+        R = [ line_parse(line, delims) for line in text.split('\n') ]
+        
+        while [] in R:
+            R.remove([])
+        
+        return R
 
 
 
