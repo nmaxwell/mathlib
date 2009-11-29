@@ -47,7 +47,7 @@ void frequency_response(
     
     double *frequencies,
     double *response,
-    double n_frequencies    )
+    int n_frequencies    )
 {
     double *test_sigmal = ml_alloc<double > (n_samples);
     double *response_sigmal = ml_alloc<double > (n_samples);

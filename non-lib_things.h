@@ -113,6 +113,19 @@ void output( T1 * data1, T2 * data2, int n, const char * fname, const char * del
     out.close();
 }
 
+template< class T1, class T2, class T3 >
+void output( T1 * data1, T2 * data2, T3 * data3, int n, const char * fname, const char * delim1="\t", const char * delim2="\n" )
+{
+    ofstream out;
+    out.open(fname, fstream::out);
+    assert(out.good() && out.is_open());
+    
+    for ( int k=0; k<n; k++ )
+        out << data1[k] << delim1 << data2[k] << delim1 << data3[k] << delim2;
+    
+    out.close();
+}
+
 double * reg_discr( double a, double b, int n)
 {
     double * p = ml_alloc<double > ( n );
@@ -178,14 +191,36 @@ void ml_copy( T1 * x, T2 * y, int n)
 
 
 
+#ifdef include_integration
+
+#include <gsl/gsl_integration.h>
 
 
 
-/*
+double integrate_R (double (*func)(double,void *), void * arg_ptr=0,  double epsabs=1E-6, double epsrel=1E-10)
+{
+    double result,real_abserr,imag_result,imag_abserr;
+    static gsl_integration_workspace * workspace = gsl_integration_workspace_alloc (1000000);
+    
+    gsl_function F;
+    F.function = func;
+    F.params = arg_ptr;
+    
+    gsl_integration_qagi (
+        &F,
+        epsabs,
+        epsrel,
+        200000,
+        workspace,
+        &result,
+        &real_abserr );
+    
+    return result;
+}
+
 
 double integrate(double (*func)(double,void *), double a, double b, void * arg_ptr=0,  double epsabs=1E-6, double epsrel=1E-10)
 {
-    
     double result,real_abserr,imag_result,imag_abserr;
     static gsl_integration_workspace * workspace = gsl_integration_workspace_alloc (1000000);
     
@@ -209,6 +244,5 @@ double integrate(double (*func)(double,void *), double a, double b, void * arg_p
 }
 
 
-*/
 
-
+#endif

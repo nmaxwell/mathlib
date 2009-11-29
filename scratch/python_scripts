@@ -1,5 +1,14 @@
 
 
+raw_input("Press ENTER to continue...")
+
+from math import *
+import pylab as p
+import sys
+sys.path.append("/workspace/mathlib/tools/python/")
+from read_file import *
+
+
 
 
 from math import *
@@ -45,7 +54,6 @@ for k in range(1,11):
 
 
 
-raw_input("Press ENTER to continue...")
 from math import *
 import pylab as p
 import sys
@@ -53,12 +61,21 @@ sys.path.append("/workspace/mathlib/tools/python/")
 from read_file import *
 
 
-data = read_file( "out" )
+F = read_file( "F" )
+FTF = read_file( "FTF" )
+test = read_file( "test" )
 
-for n in range (50):
-    p.plot( [ log10(line[n]) for line in data ] )
+p.plot( [ line[0] for line in F ], [ line[1] for line in F ] )
+p.plot( [ line[0] for line in FTF ], [ line[1] for line in FTF ] )
+p.plot( [ line[0] for line in FTF ], [ line[2] for line in FTF ] )
+p.plot( [ line[0] for line in test ], [ line[1] for line in test ] )
+p.plot( [ line[0] for line in test ], [ line[2] for line in test ] )
 
 p.show()
+
+
+
+
 
 
 

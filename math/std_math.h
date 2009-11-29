@@ -66,7 +66,8 @@ T max_norm(T * x, int n)
 
 inline double sign(double const & x)
 {
-	if (x>=0) return x; else return -x;
+	if ( x >= 0.0 ) return 1.0;
+    else return -1.0;
 }
 
 template<class X = double, class Y = X >

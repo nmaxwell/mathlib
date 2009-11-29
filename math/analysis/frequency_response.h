@@ -13,7 +13,7 @@ void frequency_response(
     
     double *frequency,
     double *response,
-    double n_frequencies    );
+    int n_frequencies    );
 
 
 
