@@ -1,0 +1,87 @@
+
+
+
+
+from math import *
+import pylab as p
+import sys
+sys.path.append("/workspace/mathlib/tools/python/")
+from read_file import *
+
+data = read_text( text )
+
+for n in range (29):
+    p.plot( [ log10(line[n]) for line in data ] )
+
+p.show()
+
+
+for n in range (29):
+    p.plot( [ line[n] for line in data ] )
+
+
+
+
+from math import *
+import pylab as p
+import sys
+sys.path.append("/workspace/mathlib/tools/python/")
+from read_file import *
+
+for k in range(1,11):
+    
+    print 0.1*k
+    data = read_file( str(k) )
+    
+    p.figure(  figsize=(12, 6), dpi=300  )
+    
+    for n in range (12):
+        p.plot( [ log10(line[n]) for line in data ] )
+    
+    p.savefig( str(0.1*k) + ".png")
+
+
+
+
+
+
+raw_input("Press ENTER to continue...")
+from math import *
+import pylab as p
+import sys
+sys.path.append("/workspace/mathlib/tools/python/")
+from read_file import *
+
+
+data = read_file( "out" )
+
+for n in range (50):
+    p.plot( [ log10(line[n]) for line in data ] )
+
+p.show()
+
+
+
+
+
+
+
+
+
+
+
+
+
+X = [ line[0] for line in data ]
+Y1 = [ line[1] for line in data ]
+Y2 = [ log10(line[2]) for line in data ]
+
+p.plot(X,Y1)
+p.show()
+
+
+
+
+
+
+

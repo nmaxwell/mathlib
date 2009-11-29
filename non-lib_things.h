@@ -57,6 +57,49 @@ void output( T * data, int n, const char * fname, const char * delim1="\t", cons
     out.close();
 }
 
+template< class T, int n_lines, int n_cols >
+void output( T data[n_lines][n_cols], const char * fname, const char * delim1="\t", const char * delim2="\n" )
+{
+    // not working yet, figure out...
+    
+    ofstream out;
+    out.open(fname, fstream::out);
+    assert(out.good() && out.is_open());
+    
+    for ( int k=0; k<n_lines; k++ )
+    {
+        for ( int j=0; j<n_cols-1; j++ )
+            out << data[k][j] << delim1;
+            out << data[k][n_cols-1] << delim2;
+    }
+    
+    out.close();
+}
+
+
+
+template< class T >
+void output( T **data, int n_lines, int n_cols, const char * fname, const char * delim1="\t", const char * delim2="\n" )
+{
+    ofstream out;
+    out.open(fname, fstream::out);
+    assert(out.good() && out.is_open());
+    
+    for ( int k=0; k<n_lines; k++ )
+    {
+        for ( int j=0; j<n_cols-1; j++ )
+            out << data[k][j] << delim1;
+            out << data[k][n_cols-1] << delim2;
+    }
+    
+    out.close();
+}
+
+
+
+
+
+
 template< class T1, class T2 >
 void output( T1 * data1, T2 * data2, int n, const char * fname, const char * delim1="\t", const char * delim2="\n" )
 {
@@ -119,6 +162,23 @@ void mean_std_dev ( double * data, int n, double & mu, double & sig )
     
     sig = sqrt(sig/n-mu*mu);
 }
+
+template<class T1, class T2 >
+void ml_copy( T1 * x, T2 * y, int n)
+{
+    // x = y
+    for (int k=0; k<n; k++)
+        x[k] = y[k];
+}
+
+
+
+
+
+
+
+
+
 
 
 /*
