@@ -46,6 +46,26 @@ void FFT(
     int out_stride=1 );
 
 
+
+void fft(
+	double * in,
+    complex<double > * & out,
+    int n,
+    int in_stride=1,
+    int out_stride=1 );
+
+
+
+
+
+
+fftw_plan fftw_plan_dft_r2c(int rank, const int *n,
+                                 double *in, fftw_complex *out,
+                                 unsigned flags);
+
+
+
+
 // IFFT: 
 
 // computes complex to real inverse fft, in must be of lengh 
@@ -67,6 +87,10 @@ void IFFT(
     int n,
     int in_stride=1,
     int out_stride=1 );
+
+
+
+
 
 
 

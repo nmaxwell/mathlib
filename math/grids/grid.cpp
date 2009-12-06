@@ -44,6 +44,10 @@
 	#ifdef GRID2D_DEL2_FD_H
 		#include "grid2D_Del2_FD.cpp"
 	#endif
+    
+    #ifdef GRID2D_DEL2_fft_H
+		#include "grid2D_Del2_fft.cpp"
+	#endif
 	
 	#ifdef GRID2D_HDAF_H
 		#include "grid2D_hdaf.cpp"
