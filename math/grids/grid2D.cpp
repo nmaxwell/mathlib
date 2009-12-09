@@ -117,7 +117,7 @@ grid2D<gridPars_ >
 	b2 = B2;
 	n2 = N2;
 	
-	array = new Ytype [n1*n2];
+    array = ml_alloc<Ytype > (n1*n2);
 }
 
 template<classgridPars_ >

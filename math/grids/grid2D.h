@@ -55,7 +55,7 @@ public: // constructors, etc
 	
 	grid2D(grid2D<gridPars_ > const & rhs);
 	
-	~grid2D() { if (array) delete array; array=0; }
+	~grid2D() { ml_free (array); }
 	
 	grid2D( int N1, Xtype A1, Xtype B1, int N2, Xtype A2, Xtype B2 );
 	

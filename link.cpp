@@ -6,6 +6,11 @@
  * 
  */
 
+
+#ifdef LAPLACIAN_H
+    #include "math/laplacian/laplacian.cpp"
+#endif
+
 #ifdef ML_BM_H
     #include "math/SDE/BM.cpp"
 #endif
@@ -51,7 +56,7 @@
 #endif
 
 #ifdef FFT_H
-	#include "math/transforms/FFT.cpp"
+	#include "math/transforms/fft.cpp"
 #endif
 
 #ifdef EUVEC_H

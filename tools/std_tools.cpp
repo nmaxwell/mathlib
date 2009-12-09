@@ -37,7 +37,7 @@ void std_exit()
 {
 	#ifdef FFT_H
 		release_fftw();
-	#endif	
+	#endif
 	
 	
 	exit(0);
