@@ -76,7 +76,7 @@ void grid2D<gridPars_ >
 	if ( n1 != rhs.n1 || n2 != rhs.n2 || array == 0 )
 	{
 		if (array) delete [] array;
-		array = new Ytype [rhs.n1*rhs.n2];
+		array = ml_alloc<Ytype > (rhs.n1*rhs.n2);
 	}
 	
 	n1 = rhs.n1;
