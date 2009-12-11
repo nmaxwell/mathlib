@@ -86,7 +86,7 @@ int writeFile( grid2D<gridPars_ > & G, const char * fname )
 	int N_header = 4*sizeof(Xtype )+2*sizeof(int );
 		
 	static char * H = (char *) new char [N_header];
-		
+    
 	ofstream out;
 	out.open(fname, fstream::out);
 	if (!out.good() || !out.is_open())

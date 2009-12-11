@@ -7,9 +7,9 @@
 
 
 
-void laplacian( double * in, double *& out, int n1, int n2, double L1, double L2 )
+void laplacian_2d_fft ( double * in, double *& out, int n1, int n2, double L1, double L2 )
 {
-    // assuming n1,n2 are even.
+    // assuming n1,n2 are even 
     
     double s1 = -ml_4pi2/((L1*L1)*(n1*n2));
     double s2 = -ml_4pi2/((L2*L2)*(n1*n2));
@@ -34,8 +34,7 @@ void laplacian( double * in, double *& out, int n1, int n2, double L1, double L2
     fftw_free( Q );
 }
 
-
-void laplacian( double * in, double *& out, int n1, int n2, int n3, double L1, double L2, double L3 )
+void laplacian_3d_fft ( double * in, double *& out, int n1, int n2, int n3, double L1, double L2, double L3 )
 {
     // assuming n1,n2 are even.
     // not yet verified...
