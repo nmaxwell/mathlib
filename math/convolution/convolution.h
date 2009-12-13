@@ -2,7 +2,7 @@
 #define ML_CONVOLUTION_H
 
 #include <mathlib/math/std_math.h>
-#include <mathlib/math/transforms/FFT.h>
+#include <mathlib/math/transforms/fft.h>
 
 /*
     periodic_convolution:

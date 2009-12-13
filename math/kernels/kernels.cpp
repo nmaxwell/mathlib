@@ -24,7 +24,7 @@ void nonperiodic_convolve(
  //   cout << "here1\n";
     
     
-    
+    /*
     
     double * ker_ext = new double [n ];	    
     complex<double > * ker_fft = new complex<double > [n/2+2];
@@ -52,7 +52,7 @@ void nonperiodic_convolve(
     delete []  Q;
     
     
-    
+    */
     
     
     

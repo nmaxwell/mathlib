@@ -2,7 +2,7 @@
 #define KERNELS_H
 
 
-#include <mathlib/math/transforms/FFT.h>
+#include <mathlib/math/transforms/fft.h>
 
 // design notes : convolution_plan
 /*
@@ -163,7 +163,7 @@ public:
     
     dont call copy constructor...
 */
-
+/*
 template<class X=double, class K=X, class T=X >
 class hybrid_convolution_plan
 {
@@ -353,7 +353,7 @@ void nonperiodic_convolve(
 
 
 
-
+*/
 
 
 
