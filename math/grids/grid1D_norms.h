@@ -17,4 +17,9 @@ YtypeScalar norm(grid1D<Ytype,YtypeScalar,Xtype  > & rhs);
 template<classgridPars_ >
 YtypeScalar norm2(grid1D<Ytype,YtypeScalar,Xtype  > & rhs);
 
+
+
+
+
+
 #endif
