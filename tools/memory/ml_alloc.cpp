@@ -49,7 +49,7 @@ void ml_free( T** &p, int m )
 template<>
 double * ml_alloc( int n )
 {
-	return (double *)fftw_malloc( sizeof(double)*n );
+    return (double *)fftw_malloc( sizeof(double)*n );
 }
 
 template< >

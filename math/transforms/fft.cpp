@@ -1037,4 +1037,80 @@ fftw_r2r_mz_3d::~fftw_r2r_mz_3d()
 
 
 
+int fftw_mz_2d_vec::plan( int req_vec_size, int req_size_1, int req_size_2, int req_in_stride, int req_out_stride );
+{
+    bool found = false;
+    int pos=0;
+    
+    for ( pos=0; pos<plans.size(); pos++ )
+    {
+        if ( size_1[pos] == req_size_1 and size_2[pos] == req_size_2 )
+            if ( vec_size[pos] == req_vec_size and in_stride[pos] == req_in_stride and out_stride[pos] == req_out_stride )
+            {
+                found = true;
+                break;
+            }
+    }
+    
+    if (!found)
+    {
+        vec_size.push_back( req_vec_size );
+        size_1.push_back( req_size_1 );
+        size_2.push_back( req_size_2 );
+        in_stride.push_back( req_in_stride );
+        out_stride.push_back( req_out_stride );
+        plans.push_back( new fftw_plan );
+        
+        pos = plans.size()-1;
+        
+        complex<double> * t_in  = (complex<double> *)fftw_malloc( sizeof(fftw_complex)*req_size_1*req_size_2*req_in_stride );
+        complex<double> * t_out = (complex<double> *)fftw_malloc( sizeof(fftw_complex)*req_size_1*req_size_2*req_out_stride );
+        
+        fftw_plan_with_nthreads( N_FFT_THREADS );
+        int sizes[] = { req_size_1, req_size_2 };
+        
+        *(plans[pos]) = fftw_plan_many_dft(
+            2, // rank 
+            &(sizes[0]),
+            1,
+            (fftw_complex *)t_in,
+            0,
+            req_in_stride,
+            0,
+            (fftw_complex *)t_out,
+            0,
+            req_out_stride,
+            0,
+            FFTW_FORWARD,
+            FFTW_PLAN_MODE );
+        
+        if ( plans[pos] == NULL )
+            std::cerr << "error: fftw_mz_2d returned null\n";
+        
+        fftw_free(t_in);
+        fftw_free(t_out);
+    }
+    
+    return pos;
+}
+
+fftw_mz_2d_vec::~fftw_mz_2d()
+{
+    for (int pos=0; pos<plans.size(); pos++)
+    {
+        //  fftw_destroy_plan( *(plans[pos]) );
+        //  delete plans[pos];
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
 #endif

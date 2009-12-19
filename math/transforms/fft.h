@@ -478,6 +478,45 @@ struct fftw_r2r_mz_3d
 
 
 
+
+
+
+
+
+struct fftw_mz_2d_vec
+{
+    vector<int > vec_size;
+    vector<int > size_1;
+    vector<int > size_2;
+    vector<int > in_stride;
+    vector<int > out_stride;
+    vector<fftw_plan * > plans;
+    
+    fftw_mz_2d():vec_size(),size_1(),size_2(),in_stride(),out_stride(),plans() {  }
+    
+    ~fftw_mz_2d();
+    
+    int plan( int req_vec_size, int req_size_1, int req_size_2, int req_in_stride=1, int req_out_stride=1 );
+    
+    int execute( int pos, complex<double> *in, complex<double> *out )
+    {
+        if ( pos <= plans.size() )
+            fftw_execute_dft( *(plans[pos]), (fftw_complex *)in, (fftw_complex *)out );
+        else return 1;
+        
+        return 0;
+    }
+};
+
+
+
+
+
+
+
+
+
+
 #include "wrappers.h"
 
 

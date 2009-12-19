@@ -15,6 +15,9 @@ void fft(
 {
     static fftw_mz_1d mz;
     
+    if ( !in )
+        std::cerr << "error: null input in fft.\n";
+    
     if (out == 0) out = (complex<double> *)fftw_malloc(sizeof(fftw_complex) * n );
     
     int plan = mz.plan( n, in_stride, out_stride );
@@ -138,7 +141,10 @@ void fft(
 {
     static fftw_r2c_mz_1d mz;
     
-    if (out == 0) out = (complex<double> *)fftw_malloc(sizeof(fftw_complex) * n/2+1 );
+    if ( !in )
+        std::cerr << "error: null input in fft.\n";
+    
+    if (out == 0) out = (complex<double> *)fftw_malloc(sizeof(fftw_complex) * (n/2+1) );
     
     int plan = mz.plan( n, in_stride, out_stride );
     
@@ -158,6 +164,9 @@ void ifft(
     static fftw_c2r_mz_1d mz;
     
     if (out == 0) out = (double *)fftw_malloc(sizeof(double) * n );
+    
+    //for (int k=0; k<n; k++)
+    //out[k] = 0;
     
     int plan = mz.plan( n, in_stride, out_stride );
     

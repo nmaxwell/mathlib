@@ -5,7 +5,6 @@
 #include "laplacian.h"
 
 
-
 void laplacian_2d_kernel_extension ( double *& ker_ext, int n1, int n2, double * kernel1, int n_l1, int n_r1, double * kernel2, int n_l2, int n_r2 )
 {
     //  i*n2+j

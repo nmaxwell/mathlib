@@ -16,7 +16,7 @@
 //#include "grids/grid1D.cpp"
 //#include "hdaf.h"
 
-
+// waring: this is crappy code
 
 struct hdaf_coefficients
 {
@@ -291,7 +291,10 @@ double hdaf_truncate_point (double eps_min, double eps_max, int m, double sigma,
 	//
 	//	finds point so that eps_min < error(x) < eps_max
 	//						eps_max > error(x) > eps_min
-	
+	//
+    // can be written more nicely, works though
+    //
+    
 	if (eps_min > eps_max){
 		double temp = eps_min;
 		eps_min = eps_max;
@@ -631,16 +634,15 @@ double hdaf_bp_interpolate(
 }
 
 
+#define hdaf_deltaHat hdaf_delta_hat
 
-
-class hdaf_deltaHat :  public functor<double, double>
+class hdaf_delta_hat :  public functor<double, double>
 {
 public:
 	double sigma;
 	int m;
 	dlognfact lognfact;
-
-		
+    
 	hdaf_deltaHat(int m_, double sig, int mmax_ = 2000)
 	:m(m_),sigma(sig),lognfact(mmax_) {};
 	

@@ -124,7 +124,7 @@ template<classgridPars_ >
 void grid2D<gridPars_ >
 ::operator=( grid2D<gridPars_ > const & rhs )
 {
-	copy(rhs);
+	//copy(rhs);
 	copyData(rhs);
 }
 

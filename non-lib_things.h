@@ -57,6 +57,21 @@ void output( T * data, int n, const char * fname, const char * delim1="\t", cons
     out.close();
 }
 
+
+template< class T >
+void output( vector<T > data, const char * fname, const char * delim1="\t", const char * delim2="\n" )
+{
+    ofstream out;
+    out.open(fname, fstream::out);
+    assert(out.good() && out.is_open());
+    int n = data.size();
+    
+    for ( int k=0; k<n; k++ )
+        out << data[k] << delim2;
+    
+    out.close();
+}
+
 template< class T, int n_lines, int n_cols >
 void output( T data[n_lines][n_cols], const char * fname, const char * delim1="\t", const char * delim2="\n" )
 {
@@ -142,7 +157,7 @@ double ml_mean ( double * data, int n )
     for ( int k=0; k<n; k++ )
         mean += data[k];
     
-    return mean;
+    return mean/n;
 }
 
 double std_dev ( double * data, int n )
@@ -185,7 +200,26 @@ void ml_copy( T1 * x, T2 * y, int n)
 }
 
 
-
+double ml_slope( double * x, double * y, int n, double & b, double & a )
+{
+    double mx = ml_mean( x, n );
+    double my = ml_mean( y, n );
+    
+    double Sxy = 0.0;
+    for ( int k=0; k<n; k++ )
+        Sxy += (x[k] - mx )*(y[k] - my );
+    
+    double Sx = 0.0;
+    for ( int k=0; k<n; k++ )
+        Sx += (x[k] - mx )*(x[k] - mx );
+    
+    double Sy = 0.0;
+    for ( int k=0; k<n; k++ )
+        Sy += (y[k] - my )*(y[k] - my );
+    
+    b = Sxy/Sx;
+    a = my - b*mx;
+}
 
 
 

@@ -45,7 +45,7 @@ YtypeScalar norm(grid2D<Ytype,YtypeScalar,Xtype  > & rhs)
 template<classgridPars_ >
 YtypeScalar norm2(grid2D<Ytype,YtypeScalar,Xtype  > & rhs)
 {
-	YtypeScalar nrm = L2norm(rhs);
+	YtypeScalar nrm = rhs.L2norm();
 	return nrm*nrm;
 }
 

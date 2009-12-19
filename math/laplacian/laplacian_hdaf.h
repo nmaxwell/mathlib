@@ -1,6 +1,7 @@
 #ifndef LAPLACIAN_HDAF_H
 #define LAPLACIAN_HDAF_H
 
+
 #include <mathlib/math/std_math.h>
 
 #include "laplacian.h"
@@ -15,8 +16,6 @@
 #define mp_4pi2 (mp_2pi*mp_2pi)
 #define mp_sqrt2 (sqrt(mp_2))
 #define mp_iu ( complex<mp_real > (mp_0, mp_1 ) )
-
-
 
 class laplacian_2d_hdaf
 {
@@ -40,13 +39,13 @@ public:
         n1 = n1_;
         n2 = n2_;
         
-        double h1 = L1/n1;
-        double h2 = L2/n2;
-        
-        double sigma1 = h1*sqrt(2*m1+1)/(ml_pi*gamma1);
-        double sigma2 = h2*sqrt(2*m2+1)/(ml_pi*gamma2);
+        L1 = fabs(L1);
+        L2 = fabs(L2);
         
         mp::mp_init(50);
+        
+        mp_real sigma1 = (((mp_real)L1)/n1)*sqrt( mp_2*m1+ mp_1)/(mp_pi*gamma1);
+        mp_real sigma2 = (((mp_real)L2)/n2)*sqrt( mp_2*m2+ mp_1)/(mp_pi*gamma2);
         
         ml_poly<mp_real > P1;
         make_hdaf_ml_poly(P1,m1 );
@@ -56,22 +55,23 @@ public:
         make_hdaf_ml_poly(P2,m2 );
         differentiate_hdaf_poly( P2, 2 );
         
-        int w1 = (int)ceil(hdaf_truncate_point (9E-16, 3E-16, m1,sigma1, 2 )/h1);
-        int w2 = (int)ceil(hdaf_truncate_point (9E-16, 3E-16, m2,sigma2, 2 )/h2);
+        int w1 = (int)ceil(hdaf_truncate_point (5E-14, 1E-16, m1, dble(sigma1), 2 )/(L1/n1));
+        int w2 = (int)ceil(hdaf_truncate_point (5E-14, 1E-16, m2, dble(sigma2), 2 )/(L2/n2));
+
         
         double * kernel1_ = ml_alloc<double > ( 2*w1+1 );
         double * kernel2_ = ml_alloc<double > ( 2*w2+1 );
         double * kernel1 = &(kernel1_[w1]);
         double * kernel2 = &(kernel2_[w2]);
         
-        mp_real H1 = ((mp_real)L1)/n1;
-        mp_real s1 = H1/(mp_sqrt2*sigma1);
+        mp_real h1 = ((mp_real)L1)/n1;
+        mp_real s1 = h1/(mp_sqrt2*sigma1);
         mp_real ss1 = s1*s1;
-        mp_real H2 = ((mp_real)L2)/n2;
-        mp_real s2 = H2/(mp_sqrt2*sigma2);
+        mp_real h2 = ((mp_real)L2)/n2;
+        mp_real s2 = h2/(mp_sqrt2*sigma2);
         mp_real ss2 = s2*s2;
-        mp_real f1 = pow(mp_sqrt2*sigma1,-3)*H1/(n1*n2);
-        mp_real f2 = pow(mp_sqrt2*sigma2,-3)*H2/(n1*n2);
+        mp_real f1 = pow(mp_sqrt2*sigma1,-3)*(h1/(n1*n2));
+        mp_real f2 = pow(mp_sqrt2*sigma2,-3)*(h2/(n1*n2));
         
         for (int k=-w1; k<=w1; k++ )
             kernel1[k] = dble( exp(-ss1*(k*k)) *P1(dble(s1*k)) *f1 );
@@ -84,7 +84,7 @@ public:
         
         if (ft_ker_ext != 0) fftw_free( ft_ker_ext );
         ft_ker_ext = 0;
-        fft_2d( ker_ext, ft_ker_ext, n1, n2 );
+        fft_2d( ker_ext, ft_ker_ext, n1, n2, 1, 1 );
         
         if (workspace != 0) fftw_free( workspace );
         workspace = (complex<double> *)fftw_malloc( sizeof(complex<double>)*n1*(n2/2+1) );
