@@ -1,27 +1,10 @@
-#ifndef ML_POLY_CPP
-#define ML_POLY_CPP
+#ifndef C_POLY_CPP
+#define C_POLY_CPP
 
 
-#include "ml_poly.h"
-
-
-
-template< class T1, class T2 >
-ml_poly<T1 > * construct_ml_poly_array ( T2 ** coefficients, int * degrees, int n  )
-{
-    ml_poly<T1 > * P = new ml_poly<T1 > [n+1];
-    
-    for ( int k=0; k<=n; k++ )
-    {
-        P[k].resize(degrees[k]);
-        for ( int j=0; j<=degrees[k]; j++ )
-            P[k][j] = coefficients[k][j];
-    }
-    
-    return P;
-}
-
-
+#ifndef ML_POLY_H
+	#include "ml_poly.h"
+#endif
 
 
 template<class T >

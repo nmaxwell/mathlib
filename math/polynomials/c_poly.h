@@ -1,5 +1,5 @@
-#ifndef ML_POLY_H
-#define ML_POLY_H
+#ifndef C_POLY_H
+#define C_POLY_H
 
 #define ML_POLY_LOOP( P ) for (int i = 0; i<=(P).n; i++)
 
@@ -138,14 +138,14 @@ public:
 	    T2 const & c5,
 	    T2 const & c6,
 	    T2 const & c7,
-	    T2 const & c8 );
-    
+	    T2 const & c8);
+	    
 };
 
 
 
-template< class T1, class T2 >
-ml_poly<T1 > * construct_ml_poly_array ( T2 ** coefficients, int * degrees, int n  );
+
+
 
 
 
