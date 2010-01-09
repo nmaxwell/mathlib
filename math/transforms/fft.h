@@ -481,7 +481,7 @@ struct fftw_r2r_mz_3d
 
 
 
-
+/*
 
 struct fftw_mz_2d_vec
 {
@@ -510,7 +510,7 @@ struct fftw_mz_2d_vec
 
 
 
-
+*/
 
 
 

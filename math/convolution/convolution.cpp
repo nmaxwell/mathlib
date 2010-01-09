@@ -3,6 +3,9 @@
 
 #include "convolution.h"
 
+
+
+
 template<class T >
 void periodic_convolution(T * ker, T * in, T *& out, int n_l, int n_r, int n, int in_stride, int out_stride )
 {

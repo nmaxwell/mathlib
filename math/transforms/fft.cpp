@@ -1035,7 +1035,7 @@ fftw_r2r_mz_3d::~fftw_r2r_mz_3d()
 
 
 
-
+/*
 
 int fftw_mz_2d_vec::plan( int req_vec_size, int req_size_1, int req_size_2, int req_in_stride, int req_out_stride );
 {
@@ -1104,7 +1104,7 @@ fftw_mz_2d_vec::~fftw_mz_2d()
 }
 
 
-
+*/
 
 
 

@@ -26,7 +26,7 @@ public:
 	
 	ml_color(ubyte R,ubyte G,ubyte B) 
 	:red( R ), green( G ), blue( B )	{}
-	
+    
 public:
 	void operator -= (ml_color & rhs)
 	{
@@ -34,6 +34,7 @@ public:
 		green -= rhs.green;
 		blue -= rhs.blue;
 	}
+    
 	void operator /= (ml_color & rhs)
 	{
 		red /= rhs.red;
@@ -48,6 +49,16 @@ public:
 		blue *= rhs;
 	}	
 	
+    ml_color operator + ( ml_color & rhs )
+	{
+        ml_color x;
+		x.red = red + rhs.red;
+        x.green = green + rhs.green;
+        x.blue = blue + rhs.blue;
+        
+        return x;
+	}	
+    
 public:
 	ml_color() {};
 	~ml_color() {};

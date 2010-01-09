@@ -1,7 +1,7 @@
 
+#http://github.com/nathanial/pylas/blob/master/las/parser.py
 
-
-def line_parse( string, delims = [',', '\t' ] ):
+def line_parse( string, delims = [',', '\t' ], sep = [' '] ):
     
     for c in delims:
         string = string.replace( c ,' ' )
@@ -19,11 +19,11 @@ def line_parse( string, delims = [',', '\t' ] ):
         return R
 
 
-def read_file(file_string, delims = [',', '\t' ] ):
+def read_file(file_string, delims = [',', '\t' ], sep = [' '] ):
     file_ptr = file(file_string)
     lines = file_ptr.readlines()
     
-    R = [ line_parse(line) for line in lines ]
+    R = [ line_parse(line, delims, sep ) for line in lines ]
     
     while [] in R:
         R.remove([])
@@ -35,7 +35,7 @@ def read_text( text, delims = [',', '\t' ], line_delim = [';' ] ):
     if isinstance(text,str):
         for c in line_delim:
             text = text.replace( c ,'\n' )
-        R = [ line_parse(line, delims) for line in text.split('\n') ]
+        R = [ line_parse(line, delims, sep ) for line in text.split('\n') ]
         
         while [] in R:
             R.remove([])

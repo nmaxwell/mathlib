@@ -7,8 +7,12 @@
  */
 
 
+#ifdef GRAD_H
+    #include "math/PDE/grad.cpp"
+#endif
+
 #ifdef LAPLACIAN_H
-    #include "math/laplacian/laplacian.cpp"
+    #include "math/PDE/laplacian.cpp"
 #endif
 
 #ifdef ML_BM_H
