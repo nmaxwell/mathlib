@@ -47,6 +47,20 @@ public:
 		red *= rhs;
 		green *= rhs;
 		blue *= rhs;
+	}
+	
+	void operator = (double rhs)
+	{
+		red = rhs;
+		green = rhs;
+		blue = rhs;
+	}	
+	
+	void operator = (float rhs)
+	{
+		red = rhs;
+		green = rhs;
+		blue = rhs;
 	}	
 	
     ml_color operator + ( ml_color & rhs )

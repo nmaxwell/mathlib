@@ -141,7 +141,9 @@ void output( T1 * data1, T2 * data2, T3 * data3, int n, const char * fname, cons
     out.close();
 }
 
-double * reg_discr( double a, double b, int n)
+#define reg_discr regular_discretization
+
+double * regular_discretization(double a, double b, int n)
 {
     double * p = ml_alloc<double > ( n );
     for (int k=0; k<n; k++ )
