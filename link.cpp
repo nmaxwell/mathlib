@@ -95,7 +95,7 @@
 	#include "math/matrices/matrix1.cpp"
 #endif
 
-#ifdef HDAF_H
+#ifdef ML_HDAF_H
 	#include "math/hdaf/hdaf.cpp"
 #endif
 

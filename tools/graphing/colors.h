@@ -28,6 +28,12 @@ public:
 	:red( R ), green( G ), blue( B )	{}
     
 public:
+    
+    bool operator == (ml_color const & rhs)
+	{
+		return ( red == rhs.red and green == rhs.green and blue == rhs.blue );
+	}
+
 	void operator -= (ml_color & rhs)
 	{
 		red -= rhs.red;

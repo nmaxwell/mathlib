@@ -1,5 +1,5 @@
-#ifndef HDAF_H
-#define HDAF_H
+#ifndef ML_HDAF_H
+#define ML_HDAF_H
 
 #include <arprec/mp_real.h>
 #include <mathlib/math/std_math.h>
@@ -187,9 +187,9 @@ T hdaf_truncate_error(double x, ml_poly<T > & P, double sigma=ml_sqrt2/2 )
 	// let f(x) = ( delta^(d)_{m,sig} (x) )^2
 	//	then F(x) =  sqrt(  \int_x^\infty f(y) dy )
 	//
-	// so the fractional errror, in truncating a concolution by delta, to x, is F(x)/F(0)
+	// so the fractional errror, in truncating a convolution by delta, to x, is F(x)/F(0)
 	//
-	// this is what this function returns. uses integration by partsand erfc.
+	// this is what this function returns. uses integration by parts and erfc.
 	
 	
 	x /= ml_sqrt2*sigma;

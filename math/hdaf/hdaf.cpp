@@ -1,5 +1,5 @@
-#ifndef HDAF_CPP
-#define HDAF_CPP
+#ifndef ML_HDAF_CPP
+#define ML_HDAF_CPP
 
 #ifndef HDAF_H
 	#include "hdaf.h"
