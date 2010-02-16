@@ -224,6 +224,16 @@ void fft_3d(
     int n2,
     int n3 )
 {
+    #ifdef ML_FFT_3D_R2C_TELL
+    
+        static int count = 1;
+        
+        cout << "called fft_3d, " << count << " times.\n";
+        
+        count ++;
+    
+    #endif
+    
     static fftw_r2c_mz_3d mz;
     
     if (out == 0) out = (complex<double> *)fftw_malloc(sizeof(fftw_complex) * n1*n2*(n3/2+1) );

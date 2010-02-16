@@ -236,7 +236,7 @@ class grad_3d_hdaf
 public:
     complex<double > * ft_ker_1;
     complex<double > * ft_ker_2;
-    complex<double > * ft_ker_2;
+    complex<double > * ft_ker_3;
     
     complex<double > * workspace_1;
     complex<double > * workspace_2;
@@ -262,7 +262,7 @@ public:
     
 public:
     
-    void init( int n1_, int n2_, int n3_, double L1, double L2, double L3, int m1, int m2, int m3, double gamma1, double gamma2, double gamma2 )
+    void init( int n1_, int n2_, int n3_, double L1, double L2, double L3, int m1, int m2, int m3, double gamma1, double gamma2, double gamma3 )
     {
         n1 = n1_;
         n2 = n2_;
@@ -288,18 +288,18 @@ public:
         
         ml_poly<mp_real > P3;
         make_hdaf_ml_poly(P3,m3 );
-        differentiate_hdaf_poly( P3,  );
+        differentiate_hdaf_poly( P3, 1 );
         
-        int w1 = (int)ceil(hdaf_truncate_point (1E-16, 1E-17, m1, dble(sigma1), 1 )/(L1/n1));
-        int w2 = (int)ceil(hdaf_truncate_point (1E-16, 1E-17, m2, dble(sigma2), 1 )/(L2/n2));
-        int w2 = (int)ceil(hdaf_truncate_point (1E-16, 1E-17, m3, dble(sigma3), 1 )/(L3/n3));
+        int w1 = (int)ceil(hdaf_truncate_point (1E-17, 1E-18, m1, dble(sigma1), 1 )/(L1/n1));
+        int w2 = (int)ceil(hdaf_truncate_point (1E-17, 1E-18, m2, dble(sigma2), 1 )/(L2/n2));
+        int w3 = (int)ceil(hdaf_truncate_point (1E-17, 1E-18, m3, dble(sigma3), 1 )/(L3/n3));
         
         double * kernel1_ = ml_alloc<double > ( 2*w1+1 );
         double * kernel2_ = ml_alloc<double > ( 2*w2+1 );
         double * kernel3_ = ml_alloc<double > ( 2*w3+1 );
         double * kernel1 = &(kernel1_[w1]);
         double * kernel2 = &(kernel2_[w2]);
-        double * kernel3 = &(kernel2_[w3]);
+        double * kernel3 = &(kernel3_[w3]);
         
         mp_real h1 = ((mp_real)L1)/n1;
         mp_real s1 = h1/(mp_sqrt2*sigma1);
@@ -310,7 +310,7 @@ public:
         mp_real ss2 = s2*s2;
         mp_real f2 = pow(mp_sqrt2*sigma2,-2)*(h2/(n1*n2*n3));
         mp_real h3 = ((mp_real)L3)/n3;
-        mp_real s3 = h3/(mp_sqrt3*sigma3);
+        mp_real s3 = h3/(mp_sqrt2*sigma3);
         mp_real ss3 = s3*s3;
         mp_real f3 = pow(mp_sqrt2*sigma3,-2)*(h3/(n1*n2*n3));
         
@@ -325,26 +325,26 @@ public:
         
         
         double * ker_ext_1=0;
-        grad_2d_kernel_extension ( ker_ext_1, n1, n2, n3, kernel1, w1, w1, 1 );
+        grad_3d_kernel_extension ( ker_ext_1, n1, n2, n3, kernel1, w1, w1, 1 );
         
         double * ker_ext_2=0;
-        grad_2d_kernel_extension ( ker_ext_2, n1, n2, n3, kernel2, w2, w2, 2 );
+        grad_3d_kernel_extension ( ker_ext_2, n1, n2, n3, kernel2, w2, w2, 2 );
         
         double * ker_ext_3=0;
-        grad_2d_kernel_extension ( ker_ext_3, n1, n2, n3, kernel2, w2, w2, 3 );
+        grad_3d_kernel_extension ( ker_ext_3, n1, n2, n3, kernel2, w2, w2, 3 );
         
         
         if (ft_ker_1 != 0) fftw_free( ft_ker_1 );
         ft_ker_1 = 0;
-        fft_3d( ker_ext_1, ft_ker_1, n1, n2, n3, 1, 1 );
+        fft_3d( ker_ext_1, ft_ker_1, n1, n2, n3 );
         
         if (ft_ker_2 != 0) fftw_free( ft_ker_2 );
         ft_ker_2 = 0;
-        fft_3d( ker_ext_2, ft_ker_2, n1, n2, n3, 1, 1 );
+        fft_3d( ker_ext_2, ft_ker_2, n1, n2, n3 );
         
         if (ft_ker_3 != 0) fftw_free( ft_ker_3 );
         ft_ker_3 = 0;
-        fft_3d( ker_ext_3, ft_ker_3, n1, n2, n3, 1, 1 );
+        fft_3d( ker_ext_3, ft_ker_3, n1, n2, n3 );
         
         if (workspace_1 != 0) fftw_free( workspace_1 );
         workspace_1 = (complex<double> *)fftw_malloc( sizeof(complex<double>)*n1*n2*(n3/2+1) );
@@ -455,8 +455,8 @@ public:
         if ( out11 == 0 ) out11 = (double *)fftw_malloc( sizeof(double)*n1*n2*n3 );
         if ( out12 == 0 ) out12 = (double *)fftw_malloc( sizeof(double)*n1*n2*n3 );
         if ( out13 == 0 ) out13 = (double *)fftw_malloc( sizeof(double)*n1*n2*n3 );
-        if ( out21 == 0 ) out21 = (double *)fftw_malloc( sizeof(double)*n1*n2*n3 );
         if ( out22 == 0 ) out22 = (double *)fftw_malloc( sizeof(double)*n1*n2*n3 );
+        if ( out23 == 0 ) out23 = (double *)fftw_malloc( sizeof(double)*n1*n2*n3 );
         if ( out33 == 0 ) out33 = (double *)fftw_malloc( sizeof(double)*n1*n2*n3 );
         
         int N = n1*n2*(n3/2+1);
@@ -480,19 +480,18 @@ public:
         
         ifft_3d( workspace_4, out33, n1, n2, n3 );
         
-        
         for (int k=0; k<N; k++)
-            workspace_4[k] = (ft_ker_1[k]*workspace_2[k]+ft_ker_2[k]*workspace_1[k])/2;
+            workspace_4[k] = (ft_ker_1[k]*workspace_2[k]+ft_ker_2[k]*workspace_1[k])*0.5;
         
         ifft_3d( workspace_4, out12, n1, n2, n3 );
         
         for (int k=0; k<N; k++)
-            workspace_4[k] = (ft_ker_1[k]*workspace_3[k]+ft_ker_3[k]*workspace_1[k])/2;
+            workspace_4[k] = (ft_ker_1[k]*workspace_3[k]+ft_ker_3[k]*workspace_1[k])*0.5;
         
         ifft_3d( workspace_4, out13, n1, n2, n3 );
         
         for (int k=0; k<N; k++)
-            workspace_4[k] = (ft_ker_3[k]*workspace_2[k]+ft_ker_2[k]*workspace_3[k])/2;
+            workspace_4[k] = (ft_ker_3[k]*workspace_2[k]+ft_ker_2[k]*workspace_3[k])*0.5;
         
         ifft_3d( workspace_4, out23, n1, n2, n3 );
         

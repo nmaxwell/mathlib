@@ -39,7 +39,9 @@ template<classgridPars_ >
 void grid3D<gridPars_ >
 ::dispData( bool clean, YtypeScalar eps)
 {
-	
+	/*
+    
+    
 	std::cout << "start data:\n\n";
 	if (clean)
 	for (int k = 0; k<n3; k++)
@@ -68,6 +70,8 @@ void grid3D<gridPars_ >
 		std::cout << std::endl;
 	}
 	std::cout << "end data.\n";
+    
+    */
 }
 
 // grid3D copy
@@ -85,8 +89,8 @@ void grid3D<gridPars_ >
 	
 	if ( n1 != rhs.n1 || n2 != rhs.n2 || n3 != rhs.n3 || array == 0 )
 	{
-		if (array) delete [] array;
-		array = new Ytype [rhs.n1*rhs.n2*rhs.n3];
+		if (array) ml_free(array);
+        array = ml_alloc<double> (rhs.n1*rhs.n2*rhs.n3);
 		
 		n1 = rhs.n1;
 	    n2 = rhs.n2;
@@ -134,7 +138,7 @@ grid3D<gridPars_ >
 	b3 = B3;
 	n3 = N3;
 	
-	array = new Ytype [n1*n2*n3];
+	array = ml_alloc<double> (n1*n2*n3);
 }
 
 template<classgridPars_ >

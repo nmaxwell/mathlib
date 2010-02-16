@@ -2,6 +2,12 @@
 #define ML_ALLOC_CPP
 
 
+#include <map>
+
+map< uint64, uint64 > ml_memory_usage;
+map< uint64, uint64 >::iterator ml_memory_iterator;
+
+
 
 // general (default to new)
 
@@ -49,12 +55,40 @@ void ml_free( T** &p, int m )
 template<>
 double * ml_alloc( int n )
 {
-    return (double *)fftw_malloc( sizeof(double)*n );
+    double * p = (double *)fftw_malloc( sizeof(double)*n );
+    
+    #ifdef ML_TRACK_MEMORY
+    
+        ml_memory_usage[ (int64)p ] = sizeof(double)*n;
+        
+        int64 sum = 0;
+        
+        for ( ml_memory_iterator=ml_memory_usage.begin() ; ml_memory_iterator != ml_memory_usage.end(); ml_memory_iterator++ )
+            sum += (*ml_memory_iterator).second;
+        
+        std::cout << "ml_alloc called; memory usage (MiB):\t" << sum/(1024*1024) << std::endl;
+        
+    #endif
+    
+    return p;
 }
 
 template< >
 void ml_free( double* &p )
 {
+    #ifdef ML_TRACK_MEMORY
+    
+        ml_memory_usage.erase( (int64)p );
+        
+        int64 sum = 0;
+        
+        for ( ml_memory_iterator=ml_memory_usage.begin() ; ml_memory_iterator != ml_memory_usage.end(); ml_memory_iterator++ )
+            sum += (*ml_memory_iterator).second;
+        
+        std::cout << "ml_free called; memory usage (MiB):\t" << sum/(1024*1024) << std::endl;
+    
+    #endif
+    
 	if (p) fftw_free(p);
 	p=0;
 }
