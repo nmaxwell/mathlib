@@ -13,6 +13,9 @@
 #ifndef _2pi
     #define _2pi    6.2831853071795865
 #endif
+#ifndef _4pi
+    #define _4pi    6.2831853071795865*2.0
+#endif
 #ifndef _4pi2
     #define _4pi2   3.9478417604357434e+1
 #endif

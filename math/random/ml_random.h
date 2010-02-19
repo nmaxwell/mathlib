@@ -56,6 +56,10 @@ public:
     double gen_double_nonzero();
     
     void std_normal_rv( double * x, int n );
+    
+    void std_normal_rv( double &x, double &y );
+    
+    void std_normal_rv( float &x, float &y );
 };
 
 

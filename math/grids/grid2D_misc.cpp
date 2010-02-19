@@ -6,7 +6,7 @@
 #endif
 
 template<classgridPars_ >
-Ytype max(grid2D<gridPars_ > & rhs, int O)
+Ytype max(grid2D<gridPars_ > & rhs, int O=0)
 {
 	Ytype M = rhs(O,O);
 	for (int i = O; i<rhs.n1-O; i++)
@@ -15,5 +15,14 @@ Ytype max(grid2D<gridPars_ > & rhs, int O)
 	return M;
 }
 
+template<classgridPars_ >
+Ytype min(grid2D<gridPars_ > & rhs, int O=0)
+{
+	Ytype M = rhs(O,O);
+	for (int i = O; i<rhs.n1-O; i++)
+	for (int j = O; j<rhs.n2-O; j++)
+		if (rhs(i,j) < M ) M = rhs(i,j);
+	return M;
+}
 
 #endif

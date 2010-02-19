@@ -14,6 +14,17 @@
  * some commonly used functions, etc. 
  */
 
+bool is_number( double x )
+{
+    if ( isnan(x) ) return false;
+    if ( isinf(x) ) return false;
+    if ( !(x == x) ) return false;
+    if ( 1.0*x != x ) return false;
+    
+    return true;
+}
+
+
 template<class T >
 inline T norm_sinc(T const & x)
 {

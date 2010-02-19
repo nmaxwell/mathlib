@@ -159,4 +159,25 @@ void ml_random::std_normal_rv( double * x, int n )
     }
 }
 
+void ml_random::std_normal_rv( double &x, double &y )
+{
+    double u1,u2;
+    
+    u1 = gen_double_nonzero();
+    u2 = gen_double_nonzero();
+    box_muller( u1, u2, x, y );
+    
+}
+
+void ml_random::std_normal_rv( float &x, float &y )
+{
+    double u1,u2;
+    
+    u1 = gen_double_nonzero();
+    u2 = gen_double_nonzero();
+    box_muller( u1, u2, x, y );
+    
+}
+
+
 #endif

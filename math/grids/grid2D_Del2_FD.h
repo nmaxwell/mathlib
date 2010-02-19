@@ -14,7 +14,7 @@ void Del2_FD(
 	int order,
 	int bdcond,
 	int BD_order=24 );
-	
+
 template<class St1,class Xt1,class St2,class Xt2 >
 void Del2_FD(
 	grid2D<double,St1,Xt1 > & in,
