@@ -7,6 +7,18 @@
 	#include "grid.h"
 #endif
 
+template<classgridPars_ >
+Ytype grid3D<gridPars_ >
+::operator() (const double & x1, const double & x2, const double & x3 )
+{
+	int i1 = ((x1-a1)/(b1-a1))*n1;
+	int i2 = ((x2-a2)/(b2-a2))*n2;
+	int i3 = ((x3-a3)/(b3-a3))*n3;
+	
+	return (*this)(i1,i2,i3);
+}
+
+
 // grid3D debug()
 template<classgridPars_ >
 void grid3D<gridPars_ >

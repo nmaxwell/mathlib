@@ -52,6 +52,8 @@ public: // access
 	inline Ytype & operator() (const int & i, const int & j, const int & k ) { return GRID3D_ARRAY(i,j,k); }
 	inline Ytype & operator[] (const int & i) { return array[ i ]; }
 	
+	inline Ytype operator() (const double & x1, const double & x2, const double & x3 );
+	
 public: // constructors, etc
 	
 	template< class Yt2,class St2,class Xt2 >

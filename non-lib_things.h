@@ -54,8 +54,12 @@ void output( T * data, int n, const char * fname, const char * delim1="\t", cons
     out.open(fname, fstream::out);
     assert(out.good() && out.is_open());
     
+    char str[40];    
     for ( int k=0; k<n; k++ )
-        out << data[k] << delim2;
+    {
+        sprintf(str, "%1.18e", data[k] );
+        out << str << delim1;
+    }    
     
     out.close();
 }
@@ -69,8 +73,13 @@ void output( vector<T > data, const char * fname, const char * delim1="\t", cons
     assert(out.good() && out.is_open());
     int n = data.size();
     
+    char str[40];
+    
     for ( int k=0; k<n; k++ )
+    {
+    //    sprintf(str, "%1.18e", data[k][j] );
         out << data[k] << delim2;
+    }
     
     out.close();
 }
@@ -103,10 +112,16 @@ void output( T **data, int n_lines, int n_cols, const char * fname, const char *
     out.open(fname, fstream::out);
     assert(out.good() && out.is_open());
     
+    char str[40];
+    
     for ( int k=0; k<n_lines; k++ )
     {
         for ( int j=0; j<n_cols-1; j++ )
-            out << data[k][j] << delim1;
+        {
+            sprintf(str, "%1.18e", data[k][j] );
+            out << str << delim1;
+        }
+            sprintf(str, "%1.18e", data[k][n_cols-1] );
             out << data[k][n_cols-1] << delim2;
     }
     

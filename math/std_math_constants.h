@@ -13,7 +13,7 @@
 
 #define ml_iu   (complex<double>(0.0,1.0))
 #define ml_2pi    6.2831853071795865
-#define ml_2pi    6.2831853071795865*2.0
+#define ml_4pi    6.2831853071795865*2.0
 #define ml_4pi2   3.9478417604357434e+1
 #define ml_pi2     9.8696044010893586
 #define ml_sq2pi   2.5066282746310005

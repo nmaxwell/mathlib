@@ -89,7 +89,7 @@ public: // basic graphics
 	
 public:
 	
-	void text_1(int x, int y, const char * text, ml_color bkgndColor = ml_white, ml_color faceColor=ml_black, int height=12, int width=0,const char * font_fname="/usr/share/fonts/truetype/latex-xft-fonts/cmr10.ttf"); 
+	void text_1(int x, int y, const char * text, ml_color bkgndColor = ml_white, ml_color faceColor=ml_black, int height=12, int width=0,const char * font_fname="/usr/share/fonts/lyx/cmr10.ttf"); 
 
 public: // math graphics
 	

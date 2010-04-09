@@ -32,13 +32,13 @@
 	
 	for 1-D this will be of the form,
 	
-		f_i = f(x_i), x_i = i*dx+xa, dx = Lx/nx, Lx = xb-xa. 0<=i<N-1,
+		f_i = f(x_i), x_i = i*dx+xa, dx = Lx/nx, Lx = xb-xa. 0<=i<N,
 		
 	so a loop through the grid points will look like,
 	
 		for (int i = 0;i<nx;i++)
-			cout << dx*i << endl; // output x_i
-			
+			cout << dx*i+xa << endl; // output x_i
+	
 	so x_i will not quite reach x_b.
 	
 	Then, mechanisms will be implemented to map to k-space via fourier transforms.

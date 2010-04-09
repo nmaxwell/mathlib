@@ -28,13 +28,13 @@ void std_setup()
 
 double get_real_time()
 {
-	/*timespec current_time;
+	timespec current_time;
 	clock_gettime(CLOCK_REALTIME, &current_time);
-	return (double) ((double)current_time.tv_sec+(double)current_time.tv_nsec/(1.0E9));*/
-    
+	return (double) ((double)current_time.tv_sec+(double)current_time.tv_nsec/(1.0E9));
+    /*
     timespec current_time;
 	clock_gettime(CLOCK_REALTIME, &current_time);
-	return (double)current_time.tv_nsec/1E9;
+	return (double)current_time.tv_nsec/1E9;*/
 }
 
 void std_exit()
