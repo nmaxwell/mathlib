@@ -7,6 +7,8 @@
  */
 
 
+
+
 #ifdef GRAD_H
     #include "math/PDE/grad.cpp"
 #endif
@@ -17,10 +19,6 @@
 
 #ifdef ML_BM_H
     #include "math/SDE/BM.cpp"
-#endif
-
-#ifdef ML_ALLOC_H
-	#include "tools/memory/ml_alloc.cpp"
 #endif
 
 #ifdef ML_ALLOC_H
@@ -38,6 +36,7 @@
 #ifdef STD_TOOLS_H
 	#include "tools/std_tools.cpp"
 #endif
+
 
 #ifdef ML_CONVOLUTION_H
 	#include "math/convolution/convolution.cpp"
@@ -115,6 +114,11 @@
 #ifdef ARRAY1_H
 	#include "tools/arrays/array1.cpp"
 #endif
+
+
+
+
+
 
 /*
 #ifndef EUVEC_H
