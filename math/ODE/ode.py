@@ -49,7 +49,12 @@ class ode:
             self.terminator = fixedTerminator(self )
         
         x = initial_condition[0]
-        y = initial_condition[1]
+        y=None
+        try:
+            y = initial_condition[1].copy()
+        except:
+            y = initial_condition[1]
+        
         dx = self.step_size
         
         if self.output is not None:
