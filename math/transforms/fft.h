@@ -84,7 +84,7 @@ struct fftw_mz_1d
     
     int plan( int req_size, int req_in_stride=1, int req_out_stride=1 );
     
-    int execute( int pos, complex<double> *in, complex<double> *out )
+    int execute( unsigned int pos, complex<double> *in, complex<double> *out )
     {
         if ( pos <= plans.size() )
             fftw_execute_dft( *(plans[pos]), (fftw_complex *)in, (fftw_complex *)out );
@@ -108,7 +108,7 @@ struct ifftw_mz_1d
     
     int plan( int req_size, int req_in_stride=1, int req_out_stride=1 );
     
-    int execute( int pos, complex<double> *in, complex<double> *out )
+    int execute( unsigned int pos, complex<double> *in, complex<double> *out )
     {
         if ( pos <= plans.size() )
             fftw_execute_dft( *(plans[pos]), (fftw_complex *)in, (fftw_complex *)out );
@@ -136,7 +136,7 @@ struct fftw_mz_2d
     
     int plan( int req_size_1, int req_size_2, int req_in_stride=1, int req_out_stride=1 );
     
-    int execute( int pos, complex<double> *in, complex<double> *out )
+    int execute( unsigned int pos, complex<double> *in, complex<double> *out )
     {
         if ( pos <= plans.size() )
             fftw_execute_dft( *(plans[pos]), (fftw_complex *)in, (fftw_complex *)out );
@@ -161,7 +161,7 @@ struct ifftw_mz_2d
     
     int plan( int req_size_1, int req_size_2, int req_in_stride=1, int req_out_stride=1 );
     
-    int execute( int pos, complex<double> *in, complex<double> *out )
+    int execute( unsigned int pos, complex<double> *in, complex<double> *out )
     {
         if ( pos <= plans.size() )
             fftw_execute_dft( *(plans[pos]), (fftw_complex *)in, (fftw_complex *)out );
@@ -188,7 +188,7 @@ struct fftw_mz_3d
     
     int plan( int req_size_1, int req_size_2, int req_size_3, int req_in_stride=1, int req_out_stride=1 );
     
-    int execute( int pos, complex<double> *in, complex<double> *out )
+    int execute( unsigned int pos, complex<double> *in, complex<double> *out )
     {
         if ( pos <= plans.size() )
             fftw_execute_dft( *(plans[pos]), (fftw_complex *)in, (fftw_complex *)out );
@@ -214,7 +214,7 @@ struct ifftw_mz_3d
     
     int plan( int req_size_1, int req_size_2, int req_size_3, int req_in_stride=1, int req_out_stride=1 );
     
-    int execute( int pos, complex<double> *in, complex<double> *out )
+    int execute( unsigned int pos, complex<double> *in, complex<double> *out )
     {
         if ( pos <= plans.size() )
             fftw_execute_dft( *(plans[pos]), (fftw_complex *)in, (fftw_complex *)out );
@@ -242,7 +242,7 @@ struct fftw_r2c_mz_1d
     
     int plan( int req_size, int req_in_stride=1, int req_out_stride=1 );
     
-    int execute( int pos, double *in, complex<double> *out )
+    int execute( unsigned int pos, double *in, complex<double> *out )
     {
         if ( pos <= plans.size() )
             fftw_execute_dft_r2c( *(plans[pos]), in, (fftw_complex *)out );
@@ -267,7 +267,7 @@ struct fftw_c2r_mz_1d
     
     int plan( int req_size, int req_in_stride=1, int req_out_stride=1 );
     
-    int execute( int pos, complex<double> *in, double *out )
+    int execute( unsigned int pos, complex<double> *in, double *out )
     {
         if ( pos <= plans.size() )
             fftw_execute_dft_c2r( *(plans[pos]), (fftw_complex *)in, out );
@@ -293,7 +293,7 @@ struct fftw_r2c_mz_2d
     
     int plan( int req_size_1, int req_size_2, int req_in_stride=1, int req_out_stride=1 );
     
-    int execute( int pos, double *in, complex<double> *out )
+    int execute( unsigned int pos, double *in, complex<double> *out )
     {
         if ( pos <= plans.size() )
             fftw_execute_dft_r2c( *(plans[pos]), in, (fftw_complex *)out );
@@ -319,7 +319,7 @@ struct fftw_c2r_mz_2d
     
     int plan( int req_size_1, int req_size_2, int req_in_stride=1, int req_out_stride=1 );
     
-    int execute( int pos, complex<double> *in, double *out )
+    int execute( unsigned int pos, complex<double> *in, double *out )
     {
         if ( pos <= plans.size() )
             fftw_execute_dft_c2r( *(plans[pos]), (fftw_complex *)in, out );
@@ -346,7 +346,7 @@ struct fftw_r2c_mz_3d
     
     int plan( int req_size_1, int req_size_2, int req_size_3, int req_in_stride=1, int req_out_stride=1 );
     
-    int execute( int pos, double *in, complex<double> *out )
+    int execute( unsigned int pos, double *in, complex<double> *out )
     {
         if ( pos <= plans.size() )
             fftw_execute_dft_r2c( *(plans[pos]), in, (fftw_complex *)out );
@@ -373,7 +373,7 @@ struct fftw_c2r_mz_3d
     
     int plan( int req_size_1, int req_size_2, int req_size_3, int req_in_stride=1, int req_out_stride=1 );
     
-    int execute( int pos, complex<double> *in, double *out )
+    int execute( unsigned int pos, complex<double> *in, double *out )
     {
         if ( pos <= plans.size() )
             fftw_execute_dft_c2r( *(plans[pos]), (fftw_complex *)in, out );
@@ -411,7 +411,7 @@ struct fftw_r2r_mz_1d
     
     int plan( int req_size, fftw_r2r_kind req_kind, int req_in_stride=1, int req_out_stride=1 );
     
-    int execute( int pos, double *in, double*out )
+    int execute( unsigned int pos, double *in, double*out )
     {
         if ( pos <= plans.size() )
             fftw_execute_r2r( *(plans[pos]), in, out );
@@ -438,7 +438,7 @@ struct fftw_r2r_mz_2d
     
     int plan( int req_size_1, int req_size_2, fftw_r2r_kind req_kind, int req_in_stride=1, int req_out_stride=1 );
     
-    int execute( int pos, double *in, double*out )
+    int execute( unsigned int pos, double *in, double*out )
     {
         if ( pos <= plans.size() )
             fftw_execute_r2r( *(plans[pos]), in, out );
@@ -466,7 +466,7 @@ struct fftw_r2r_mz_3d
     
     int plan( int req_size_1, int req_size_2, int req_size_3, fftw_r2r_kind req_kind, int req_in_stride=1, int req_out_stride=1 );
     
-    int execute( int pos, double *in, double*out )
+    int execute( unsigned int pos, double *in, double*out )
     {
         if ( pos <= plans.size() )
             fftw_execute_r2r( *(plans[pos]), in, out );
@@ -498,7 +498,7 @@ struct fftw_mz_2d_vec
     
     int plan( int req_vec_size, int req_size_1, int req_size_2, int req_in_stride=1, int req_out_stride=1 );
     
-    int execute( int pos, complex<double> *in, complex<double> *out )
+    int execute( unsigned int pos, complex<double> *in, complex<double> *out )
     {
         if ( pos <= plans.size() )
             fftw_execute_dft( *(plans[pos]), (fftw_complex *)in, (fftw_complex *)out );

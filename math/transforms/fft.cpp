@@ -8,7 +8,7 @@
 int fftw_mz_1d::plan( int req_size, int req_in_stride, int req_out_stride )
 {
     bool found = false;
-    int pos=0;
+    unsigned int pos=0;
     
     for ( pos=0; pos<plans.size(); pos++ )
     {
@@ -62,7 +62,7 @@ int fftw_mz_1d::plan( int req_size, int req_in_stride, int req_out_stride )
 
 fftw_mz_1d::~fftw_mz_1d()
 {
-    for (int pos=0; pos<plans.size(); pos++)
+    for (unsigned int pos=0; pos<plans.size(); pos++)
     {
         //  fftw_destroy_plan( *(plans[pos]) );
         //  delete plans[pos];
@@ -72,7 +72,7 @@ fftw_mz_1d::~fftw_mz_1d()
 int fftw_mz_2d::plan( int req_size_1, int req_size_2, int req_in_stride, int req_out_stride )
 {
     bool found = false;
-    int pos=0;
+    unsigned int pos=0;
     
     for ( pos=0; pos<plans.size(); pos++ )
     {
@@ -127,7 +127,7 @@ int fftw_mz_2d::plan( int req_size_1, int req_size_2, int req_in_stride, int req
 
 fftw_mz_2d::~fftw_mz_2d()
 {
-    for (int pos=0; pos<plans.size(); pos++)
+    for (unsigned int pos=0; pos<plans.size(); pos++)
     {
         //  fftw_destroy_plan( *(plans[pos]) );
         //  delete plans[pos];
@@ -138,7 +138,7 @@ fftw_mz_2d::~fftw_mz_2d()
 int fftw_mz_3d::plan( int req_size_1, int req_size_2, int req_size_3, int req_in_stride, int req_out_stride )
 {
     bool found = false;
-    int pos=0;
+    unsigned int pos=0;
     
     for ( pos=0; pos<plans.size(); pos++ )
     {
@@ -194,7 +194,7 @@ int fftw_mz_3d::plan( int req_size_1, int req_size_2, int req_size_3, int req_in
 
 fftw_mz_3d::~fftw_mz_3d()
 {
-    for (int pos=0; pos<plans.size(); pos++)
+    for (unsigned int pos=0; pos<plans.size(); pos++)
     {
         //  fftw_destroy_plan( *(plans[pos]) );
         //  delete plans[pos];
@@ -210,7 +210,7 @@ fftw_mz_3d::~fftw_mz_3d()
 int ifftw_mz_1d::plan( int req_size, int req_in_stride, int req_out_stride )
 {
     bool found = false;
-    int pos=0;
+    unsigned int pos=0;
     
     for ( pos=0; pos<plans.size(); pos++ )
     {
@@ -264,7 +264,7 @@ int ifftw_mz_1d::plan( int req_size, int req_in_stride, int req_out_stride )
 
 ifftw_mz_1d::~ifftw_mz_1d()
 {
-    for (int pos=0; pos<plans.size(); pos++)
+    for (unsigned int pos=0; pos<plans.size(); pos++)
     {
         //  fftw_destroy_plan( *(plans[pos]) );
         //  delete plans[pos];
@@ -274,7 +274,7 @@ ifftw_mz_1d::~ifftw_mz_1d()
 int ifftw_mz_2d::plan( int req_size_1, int req_size_2, int req_in_stride, int req_out_stride )
 {
     bool found = false;
-    int pos=0;
+    unsigned int pos=0;
     
     for ( pos=0; pos<plans.size(); pos++ )
     {
@@ -329,7 +329,7 @@ int ifftw_mz_2d::plan( int req_size_1, int req_size_2, int req_in_stride, int re
 
 ifftw_mz_2d::~ifftw_mz_2d()
 {
-    for (int pos=0; pos<plans.size(); pos++)
+    for (unsigned int pos=0; pos<plans.size(); pos++)
     {
         //  fftw_destroy_plan( *(plans[pos]) );
         //  delete plans[pos];
@@ -340,7 +340,7 @@ ifftw_mz_2d::~ifftw_mz_2d()
 int ifftw_mz_3d::plan( int req_size_1, int req_size_2, int req_size_3, int req_in_stride, int req_out_stride )
 {
     bool found = false;
-    int pos=0;
+    unsigned int pos=0;
     
     for ( pos=0; pos<plans.size(); pos++ )
     {
@@ -396,7 +396,7 @@ int ifftw_mz_3d::plan( int req_size_1, int req_size_2, int req_size_3, int req_i
 
 ifftw_mz_3d::~ifftw_mz_3d()
 {
-    for (int pos=0; pos<plans.size(); pos++)
+    for (unsigned int pos=0; pos<plans.size(); pos++)
     {
         //  fftw_destroy_plan( *(plans[pos]) );
         //  delete plans[pos];
@@ -413,7 +413,7 @@ ifftw_mz_3d::~ifftw_mz_3d()
 int fftw_r2c_mz_1d::plan( int req_size, int req_in_stride, int req_out_stride )
 {
     bool found = false;
-    int pos=0;
+    unsigned int pos=0;
     
     for ( pos=0; pos<plans.size(); pos++ )
     {
@@ -466,7 +466,7 @@ int fftw_r2c_mz_1d::plan( int req_size, int req_in_stride, int req_out_stride )
 
 fftw_r2c_mz_1d::~fftw_r2c_mz_1d()
 {
-    for (int pos=0; pos<plans.size(); pos++)
+    for (unsigned int pos=0; pos<plans.size(); pos++)
     {
         //  fftw_destroy_plan( *(plans[pos]) );
         //  delete plans[pos];
@@ -476,7 +476,7 @@ fftw_r2c_mz_1d::~fftw_r2c_mz_1d()
 int fftw_r2c_mz_2d::plan( int req_size_1, int req_size_2, int req_in_stride, int req_out_stride )
 {
     bool found = false;
-    int pos=0;
+    unsigned int pos=0;
     
     for ( pos=0; pos<plans.size(); pos++ )
     {
@@ -530,7 +530,7 @@ int fftw_r2c_mz_2d::plan( int req_size_1, int req_size_2, int req_in_stride, int
 
 fftw_r2c_mz_2d::~fftw_r2c_mz_2d()
 {
-    for (int pos=0; pos<plans.size(); pos++)
+    for (unsigned int pos=0; pos<plans.size(); pos++)
     {
         //  fftw_destroy_plan( *(plans[pos]) );
         //  delete plans[pos];
@@ -540,7 +540,7 @@ fftw_r2c_mz_2d::~fftw_r2c_mz_2d()
 int fftw_r2c_mz_3d::plan( int req_size_1, int req_size_2, int req_size_3, int req_in_stride, int req_out_stride )
 {
     bool found = false;
-    int pos=0;
+    unsigned int pos=0;
     
     for ( pos=0; pos<plans.size(); pos++ )
     {
@@ -595,7 +595,7 @@ int fftw_r2c_mz_3d::plan( int req_size_1, int req_size_2, int req_size_3, int re
 
 fftw_r2c_mz_3d::~fftw_r2c_mz_3d()
 {
-    for (int pos=0; pos<plans.size(); pos++)
+    for (unsigned int pos=0; pos<plans.size(); pos++)
     {
         //  fftw_destroy_plan( *(plans[pos]) );
         //  delete plans[pos];
@@ -611,7 +611,7 @@ fftw_r2c_mz_3d::~fftw_r2c_mz_3d()
 int fftw_c2r_mz_1d::plan( int req_size, int req_in_stride, int req_out_stride )
 {
     bool found = false;
-    int pos=0;
+    unsigned int pos=0;
     
     for ( pos=0; pos<plans.size(); pos++ )
     {
@@ -664,7 +664,7 @@ int fftw_c2r_mz_1d::plan( int req_size, int req_in_stride, int req_out_stride )
 
 fftw_c2r_mz_1d::~fftw_c2r_mz_1d()
 {
-    for (int pos=0; pos<plans.size(); pos++)
+    for (unsigned int pos=0; pos<plans.size(); pos++)
     {
         //  fftw_destroy_plan( *(plans[pos]) );
         //  delete plans[pos];
@@ -674,7 +674,7 @@ fftw_c2r_mz_1d::~fftw_c2r_mz_1d()
 int fftw_c2r_mz_2d::plan( int req_size_1, int req_size_2, int req_in_stride, int req_out_stride )
 {
     bool found = false;
-    int pos=0;
+    unsigned int pos=0;
     
     for ( pos=0; pos<plans.size(); pos++ )
     {
@@ -728,7 +728,7 @@ int fftw_c2r_mz_2d::plan( int req_size_1, int req_size_2, int req_in_stride, int
 
 fftw_c2r_mz_2d::~fftw_c2r_mz_2d()
 {
-    for (int pos=0; pos<plans.size(); pos++)
+    for (unsigned int pos=0; pos<plans.size(); pos++)
     {
         //  fftw_destroy_plan( *(plans[pos]) );
         //  delete plans[pos];
@@ -738,7 +738,7 @@ fftw_c2r_mz_2d::~fftw_c2r_mz_2d()
 int fftw_c2r_mz_3d::plan( int req_size_1, int req_size_2, int req_size_3, int req_in_stride, int req_out_stride )
 {
     bool found = false;
-    int pos=0;
+    unsigned int pos=0;
     
     for ( pos=0; pos<plans.size(); pos++ )
     {
@@ -793,7 +793,7 @@ int fftw_c2r_mz_3d::plan( int req_size_1, int req_size_2, int req_size_3, int re
 
 fftw_c2r_mz_3d::~fftw_c2r_mz_3d()
 {
-    for (int pos=0; pos<plans.size(); pos++)
+    for (unsigned int pos=0; pos<plans.size(); pos++)
     {
         //  fftw_destroy_plan( *(plans[pos]) );
         //  delete plans[pos];
@@ -826,7 +826,7 @@ fftw_c2r_mz_3d::~fftw_c2r_mz_3d()
 int fftw_r2r_mz_1d::plan( int req_size, fftw_r2r_kind req_kind, int req_in_stride, int req_out_stride )
 {
     bool found = false;
-    int pos=0;
+    unsigned int pos=0;
     
     for ( pos=0; pos<plans.size(); pos++ )
     {
@@ -880,7 +880,7 @@ int fftw_r2r_mz_1d::plan( int req_size, fftw_r2r_kind req_kind, int req_in_strid
 
 fftw_r2r_mz_1d::~fftw_r2r_mz_1d()
 {
-    for (int pos=0; pos<plans.size(); pos++)
+    for (unsigned int pos=0; pos<plans.size(); pos++)
     {
         //  fftw_destroy_plan( *(plans[pos]) );
         //  delete plans[pos];
@@ -892,7 +892,7 @@ fftw_r2r_mz_1d::~fftw_r2r_mz_1d()
 int fftw_r2r_mz_2d::plan( int req_size_1,int req_size_2, fftw_r2r_kind req_kind, int req_in_stride, int req_out_stride )
 {
     bool found = false;
-    int pos=0;
+    unsigned int pos=0;
     
     for ( pos=0; pos<plans.size(); pos++ )
     {
@@ -949,7 +949,7 @@ int fftw_r2r_mz_2d::plan( int req_size_1,int req_size_2, fftw_r2r_kind req_kind,
 
 fftw_r2r_mz_2d::~fftw_r2r_mz_2d()
 {
-    for (int pos=0; pos<plans.size(); pos++)
+    for (unsigned int pos=0; pos<plans.size(); pos++)
     {
         //  fftw_destroy_plan( *(plans[pos]) );
         //  delete plans[pos];
@@ -964,7 +964,7 @@ fftw_r2r_mz_2d::~fftw_r2r_mz_2d()
 int fftw_r2r_mz_3d::plan( int req_size_1, int req_size_2, int req_size_3, fftw_r2r_kind req_kind, int req_in_stride, int req_out_stride )
 {
     bool found = false;
-    int pos=0;
+    unsigned int pos=0;
     
     for ( pos=0; pos<plans.size(); pos++ )
     {
@@ -1022,7 +1022,7 @@ int fftw_r2r_mz_3d::plan( int req_size_1, int req_size_2, int req_size_3, fftw_r
 
 fftw_r2r_mz_3d::~fftw_r2r_mz_3d()
 {
-    for (int pos=0; pos<plans.size(); pos++)
+    for (unsigned int pos=0; pos<plans.size(); pos++)
     {
         //  fftw_destroy_plan( *(plans[pos]) );
         //  delete plans[pos];
@@ -1040,7 +1040,7 @@ fftw_r2r_mz_3d::~fftw_r2r_mz_3d()
 int fftw_mz_2d_vec::plan( int req_vec_size, int req_size_1, int req_size_2, int req_in_stride, int req_out_stride );
 {
     bool found = false;
-    int pos=0;
+    unsigned int pos=0;
     
     for ( pos=0; pos<plans.size(); pos++ )
     {
@@ -1096,7 +1096,7 @@ int fftw_mz_2d_vec::plan( int req_vec_size, int req_size_1, int req_size_2, int 
 
 fftw_mz_2d_vec::~fftw_mz_2d()
 {
-    for (int pos=0; pos<plans.size(); pos++)
+    for (unsigned int pos=0; pos<plans.size(); pos++)
     {
         //  fftw_destroy_plan( *(plans[pos]) );
         //  delete plans[pos];
